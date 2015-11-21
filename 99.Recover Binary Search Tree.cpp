@@ -9,7 +9,20 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-TreeNode *pre = NULL, *left = NULL, *right = NULL;
+TreeNode *pre = NULL, *leftNode = NULL, *rightNode = NULL;
+
+void check(TreeNode *cur) {
+    if (pre != NULL && pre->val > cur->val) {
+        if (leftNode == NULL) {
+            leftNode = pre;
+            rightNode = cur;
+        } else {
+            rightNode = cur;
+        }
+    }
+    pre = cur;
+}
+
 void recoverTree(TreeNode* root) {
     TreeNode *cur = root, *prev = NULL;
     while (cur != NULL) {
@@ -31,17 +44,9 @@ void recoverTree(TreeNode* root) {
 
         }
     }
-    swap(left->val, right->val);
+    swap(leftNode->val, rightNode->val);
 }
 
-void check(TreeNode *cur) {
-    if (pre != NULL && pre->val > cur->val) {
-        if (left == NULL) {
-            left = pre;
-            right = cur;
-        } else {
-            right = cur;
-        }
-    }
-    pre = cur;
+int main() {
+
 }

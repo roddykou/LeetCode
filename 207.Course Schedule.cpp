@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -42,5 +43,5 @@ bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
 }
 
 int main() {
-    
+
 }

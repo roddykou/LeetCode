@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Given a triangle, find the minimum path sum from top to bottom.
 int minimumTotal(vector<vector<int> > &triangle) {
     vector<int> minRow  = triangle[triangle.size() - 1];
     for (int i = triangle.size() - 2; i >= 0; i--)

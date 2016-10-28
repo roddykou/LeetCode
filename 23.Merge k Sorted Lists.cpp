@@ -17,6 +17,15 @@ struct mycomparison {
 };
 
 ListNode* mergeKLists(vector<ListNode*>& lists) {
+    /*
+                Time complexity
+                Average     Worst
+        Space   O(n)        O(n)
+        Search  O(n)        O(n)
+        Insert  O(1)        O(log n)       ! But I think the average is O(log n)
+        Delete  O(log n)    O(log n)
+        Peek    O(1)        O(1)
+     */
     priority_queue<ListNode*, vector<ListNode*>, mycomparison > heap;
     ListNode dummy (0), *runner = &dummy;
 

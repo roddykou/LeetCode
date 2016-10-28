@@ -14,6 +14,7 @@ string getBtwSlashes(string &path, int &i) {
     return ret;
 }
 
+// Given an absolute path for a file (Unix-style), simplify it.
 string simplifyPath(string path) {
     vector<string> s;
     int i = 0;

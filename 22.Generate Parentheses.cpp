@@ -14,6 +14,8 @@ void helper(vector<string> &ret, string current, int left, int right) {
     }
 }
 
+// parenthesis related questions usually need to use relationship between
+// opening and closing parenthesis.
 vector<string> generateParenthesis(int n) {
     vector<string> ret;
     helper(ret, "", n, n);

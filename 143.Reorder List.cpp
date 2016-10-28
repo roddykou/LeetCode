@@ -8,6 +8,8 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+// Given a list L: L0→L1→…→Ln-1→Ln,
+// reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
 void reorderList(ListNode* head) {
     if (head == NULL || head->next == NULL) return;
     ListNode *slow = head, *fast = head;
@@ -37,5 +39,5 @@ void reorderList(ListNode* head) {
 }
 
 int main() {
-    
+
 }

@@ -1,0 +1,14 @@
+先说whatsapp，果然和地里报过的面经一样，还是比较非常规的，先是邮件发题目45min完成一个leetcode上sort list原题，然后是第一轮skype语音面试，上过OS的课没，file system懂吗，UDP TCP 区别，HTTP response的header里都有啥，database懂吗 transaction为啥重要，多线程用过吗。然后写了一个很简单的linkedlist的题目，求length，append 到末尾，append到开头，append整个序列，这个速度是linear，问你如果继续提高速度，要用到multithread，大概讲一下怎么实现这个，tips 在每个线程返回结果给master thread的时候merge的时候为了constant time，需要记录tail的node。 然后就结束了，在等下一轮skype。
+
+准备了bash，os，network，都没被问。上来介绍了下直接做题了。给一个listener的interface，大概让你实现3个function，get(String key, Object value), put(String key, Object value), registerListener(String key, Listener listener)写完了以后又让实现一个putall(HashMap<String, Value> map)，改变原有的value，call每一个listener，写完后，又让重写了registerListener(List<String> keys, Listener listener)和putAll，规则忘记了，感觉比较绕。lz最后一个followup的最后一个函数没答上来，事后发现Object用==比较了，应该用.equals，加上他家招这么少，估计没戏了，提供个数据吧。。。
+
+
+1. 输入一个url之后会发生什么，然后深入问了各种server的问题。详细问了load balancer中各种request distribution algorithm，以及时间复杂度，各个server是否需要entire copy of database。
+2. 如何在不需要第三个变量的情况下，交换两个integer的值，给出数学算法和位运算。
+3. 如何在一个sorted array中找到target value， 时间复杂度怎样
+4. 如何用O(1)时间从一个unsorted array中delete一个element，string的length怎么更新
+5. 如何不使用loop来print一个string.
+
+
+然而这一轮是一个印度妹子，一上来问我进程通信，我说我用macbook以后问在mac下面如何通过进程名称kill进程，如何查看进程信息，top里进程的每个属性是什么意思，OS如何管理进程，top命令是从哪里拿到进程信息的。。。Blabla，然后又开始面网络原理，怎么访问facebook.com，发的数据包是什么格式，用什么system call发数据，TCP三次握手，C++socket编程那些系统函数调用顺序blabla，还问建立socket的时候用到什么参数。。。靠着两年前模糊的印象和迅速google撑了过去，感觉两腿发软。。。 
+问了大概25分钟之后开始technical interview, 一个简单的在电话本里二分搜索，查找新联系人插入位置，如果电话本里有50 Billion个名字怎么办，差不多就酱紫。

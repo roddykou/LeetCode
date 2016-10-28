@@ -1,0 +1,8 @@
+hdfs,hbase 架构/逻辑
+先问了Docker相对于TYPE1 virtualization的优势
+我提出LB＋Nginx group + SAN的⽅法，他和我详细讨论了Nginx的配置⽂件内容（主要是consistenthashing和proxy），然后跳到了SAN的同步问题（SAN需要时间做duplicate），我的设计中有可能出现⽂件上传后GET返回404的情况，后来我就懵了
+
+OOD 设计⼀一个poker game
+
+Gossip / Flooding Protocol
+

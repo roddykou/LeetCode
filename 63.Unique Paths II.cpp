@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Find total number of unique paths
 int uniquePathsWithObstacles(vector<vector<int> >& obstacleGrid) {
     int row = obstacleGrid.size(), col = obstacleGrid[0].size();
     vector<vector<int> > dp (row, vector<int> (col, 0));

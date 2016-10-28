@@ -6,44 +6,40 @@
 using namespace std;
 
 string minWindow(string s, string t) {
-	int distinctCharsToMatch = 0;
-	vector<int> charsToMatch (256, 0);
+	int UniqueCharToMatch = 0;  // prevent case we falsely match ABB for T: AAB
+	vector<int> table (256, 0);
 	for (int i = 0; i < t.length(); i++) {
-		if (charsToMatch[t[i]] == 0)
-			distinctCharsToMatch++;
-		charsToMatch[t[i]]++;
+		 if (table[t[i]] == 0)
+			  UniqueCharToMatch++;
+		 table[t[i]]++;
 	}
 
 	string ret = "";
 	int start = 0, end = 0, retLen = INT_MAX;
 	while (start < s.length() && end < s.length()) {
-		cout << "distinctCharsToMatch: " << distinctCharsToMatch << " start: " << start << " end: " << end << endl;
-		if (distinctCharsToMatch > 0) {
-			charsToMatch[s[end]]--;
-			if (charsToMatch[s[end]] == 0 && t.find(s[end]) != string::npos) {
-				distinctCharsToMatch--;
-			}
-			if (distinctCharsToMatch > 0) {
-				end++;
-			}
-		} else if (distinctCharsToMatch == 0) {
-			if (charsToMatch[s[start]] == 0 && t.find(s[start]) != string::npos) {
-				if (retLen > end - start + 1) {
+		 if (UniqueCharToMatch > 0) {
+			  table[s[end]]--;
+			  if (table[s[end]] == 0 && s.find(s[end]) != string::npos)
+					UniqueCharToMatch--;
+			  if (UniqueCharToMatch > 0)
+					end++;
+		 } else if (UniqueCharToMatch == 0) {
+			  if (retLen > end - start + 1) {
 					retLen = end - start + 1;
 					ret = s.substr(start, retLen);
-					cout << "ret: " << ret << endl;
-				}
-				/* Don't forget this one */
-				end++;
-				distinctCharsToMatch++;
-			}
-			charsToMatch[s[start]]++;
-			start++;
-		} else {
-			cout << "FUCK" << endl;
-		}
+			  }
+			  if (table[s[start]] == 0 && t.find(s[start]) != string::npos) {
+					end++;
+					UniqueCharToMatch++;
+			  }
+			  table[s[start]]++;
+			  start++;
+
+		 } else {
+			  cout << "FUCK!!!" << endl;
+		 }
 	}
-	return ret;
+	return ret;	
 }
 
 int main() {

@@ -20,59 +20,37 @@ struct TreeLinkNode {
   6   7   8
 */
 void connect(TreeLinkNode *root) {
-    TreeLinkNode *parent = root, *head = NULL;
-    while (parent) {
-        TreeLinkNode *cur, *next;
-        while (parent) {
-            if (parent->left) {
-                cur = parent->left;
-                break;
-            } else if (parent->right) {
-                cur = parent->right;
-                break;
-            } else {
+    if (root == nullptr)    return;
+
+    TreeLinkNode *parent = root;
+    while (parent != nullptr) {
+        TreeLinkNode *childHead = nullptr;
+        while(parent != nullptr && childHead == nullptr)
+            if (parent->left != nullptr)
+                childHead = parent->left;
+            else if (parent->right != nullptr)
+                childHead = parent->right;
+            else
+                parent = parent->next;
+
+        TreeLinkNode *childRunner = childHead, *childNext = nullptr;
+        while (childRunner != nullptr) {
+            while (parent != nullptr && childNext == nullptr) {
+                if (childRunner == parent->left && parent->right != nullptr) {
+                    childNext = parent->right;
+                } else if (childRunner != parent->left && parent->left != nullptr) {
+                    childNext = parent->left;
+                    break;
+                } else if (parent->right != nullptr) {
+                    childNext = parent->right;
+                }
                 parent = parent->next;
             }
+            childRunner->next = childNext;
+            childRunner = childNext;
+            childNext = nullptr;
         }
-
-        head = cur, next = cur;
-
-        while (parent) {
-            if (parent->left == NULL && parent->right == NULL) {
-                parent = parent->next;
-            } else if (parent->left && parent->right == NULL) {
-                if (next == parent->left) {
-                    parent = parent->next;
-                } else {
-                    next = parent->left;
-                    cur->next = next;
-                    cur = next;
-                    parent = parent->next;
-                }
-            } else if (parent->left == NULL && parent->right) {
-                if (next == parent->right) {
-                    parent = parent->next;
-                } else {
-                    next = parent->right;
-                    cur->next = next;
-                    cur = next;
-                    parent = parent->next;
-                }
-            } else {
-                if (next == parent->left) {
-                    next = parent->right;
-                    cur->next = next;
-                    cur = next;
-                } else if (next == parent->right) {
-                    parent = parent->next;
-                } else {
-                    next = parent->left;
-                    cur->next = next;
-                    cur = next;
-                }
-            }
-        }
-        parent = head;
+        parent = childHead;
     }
 }
 

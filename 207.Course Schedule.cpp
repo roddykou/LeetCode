@@ -26,7 +26,7 @@ vector<int> getIndegree(int numCourses, vector<pair<int, int> >& prerequisites) 
 }
 
 
-// 每次从第一个节点开始找没有indegree的节点，将其删除。
+// 每次从第一个节点开始找没有indegree的节点，将其删除。Topology Sort
 bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
     vector<vector<int> > graph = getGraph(numCourses, prerequisites);
     vector<int> indegree = getIndegree(numCourses, prerequisites);

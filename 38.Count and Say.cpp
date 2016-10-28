@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// 1, 11, 21, 1211, 111221, ...
 string countAndSay(int n) {
     string ret = "1";
     for (int i = 2; i <= n; i++) {

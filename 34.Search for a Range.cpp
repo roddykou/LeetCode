@@ -2,7 +2,7 @@
 #include <iostream>
 
 using namespace std;
-
+// Given a sorted array of integers, find the starting and ending position of a given target value.
 vector<int> searchRange(vector<int>& nums, int target) {
     vector<int> ret (2, -1);
     int start = 0, end = nums.size() - 1, mid = (start + end) / 2;

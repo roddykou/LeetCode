@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
 void setZeroes(vector<vector<int> >& matrix) {
     int row = matrix.size(), col = matrix[0].size();
     bool isRowOneZero = false;

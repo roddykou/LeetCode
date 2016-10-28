@@ -1,0 +1,21 @@
+ENQUEUE(x)
+    q ← new record
+    q^.value ← x
+    q^.next ← NULL
+    repeat
+        p ← tail
+        succ ← COMPARE&SWAP(p^.next, NULL, q)
+        if succ ≠ TRUE
+            COMPARE&SWAP(tail, p, p^.next)
+    until succ = TRUE
+    COMPARE&SWAP(tail,p,q)
+end
+
+DEQUEUE()
+    repeat
+        p ← head
+        if p^.next = NULL
+            error queue empty
+    until COMPARE&SWAP(head, p, p^.next)
+    return p^.next^.value
+end

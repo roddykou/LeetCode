@@ -20,6 +20,14 @@ ListNode* reverseList(ListNode* head) {
     return prev;
 }
 
+ListNode* reverseListRecur(ListNode* head) {
+    if (head == nullptr || head->next == nullptr)    return head;
+    ListNode *ret = reverseListRecur(head->next);
+    head->next->next = head;
+    head->next = nullptr;
+    return ret;
+}
+
 int main() {
     ListNode *zero = new ListNode(0);
     ListNode *one = new ListNode(1);
